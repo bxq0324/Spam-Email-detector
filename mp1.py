@@ -1,12 +1,4 @@
-# mp3.py
-# ---------------
-# Licensing Information:  You are free to use or extend this projects for
-# educational purposes provided that (1) you do not distribute or publish
-# solutions, (2) you retain this notice, and (3) you provide clear
-# attribution to the University of Illinois at Urbana-Champaign
-#
-# Created by Justin Lizama (jlizama2@illinois.edu) on 09/28/2018
-import sys
+
 import argparse
 import configparser
 import copy
@@ -15,9 +7,8 @@ import numpy as np
 import reader
 import naive_bayes as nb
 
-"""
-This file contains the main application that is run for this MP.
-"""
+
+
 
 def compute_accuracies(predicted_labels, dev_labels):
     yhats = predicted_labels
@@ -43,17 +34,7 @@ def print_stats(accuracy, false_positive, false_negative, true_positive, true_ne
     print(f"total number of samples {numvalues}")
 
 
-"""
-Main function
 
-    You can modify the default parameter settings given below, if you don't like constantly
-        typing your favorite values at the command line.
-
-    You can modify the calls to naiveBayes and bigramBayes so that settings for tunable parameters
-        (e.g. the Laplace smoothing constants) aren't passed through.   Then your default settings in
-        naive_bayes.py will be used.
-
-"""
 def main(args):
 
     train_set, train_labels, dev_set, dev_labels = nb.load_data(args.training_dir,args.development_dir,args.stemming,args.lowercase)
