@@ -1,31 +1,10 @@
-# naive_bayes.py
-# ---------------
-# Licensing Information:  You are free to use or extend this projects for
-# educational purposes provided that (1) you do not distribute or publish
-# solutions, (2) you retain this notice, and (3) you provide clear
-# attribution to the University of Illinois at Urbana-Champaign
-#
-# Created by Justin Lizama (jlizama2@illinois.edu) on 09/28/2018
+
 import numpy as np
 import math
 from tqdm import tqdm
 from collections import Counter
 import reader
 
-"""
-This is the main entry point for MP1. You should only modify code
-within this file -- the unrevised staff files will be used for all other
-files and classes when code is run, so be careful to not modify anything else.
-"""
-
-
-
-
-"""
-  load_data calls the provided utility to load in the dataset.
-  You can modify the default values for stemming and lowercase, to improve performance when
-       we haven't passed in specific values for these parameters.
-"""
  
 def load_data(trainingdir, testdir, stemming=False, lowercase=False, silently=False):
     print(f"Stemming is {stemming}")
@@ -38,17 +17,6 @@ def create_word_maps_uni(X, y, max_size=None):
     """
     X: train sets
     y: train labels
-    max_size: you can ignore this, we are not using it
-    
-    return two dictionaries: pos_vocab, neg_vocab
-    pos_vocab:
-        In data where labels are 1 
-        keys: words 
-        values: number of times the word appears
-    neg_vocab:
-        In data where labels are 0
-        keys: words 
-        values: number of times the word appears 
     """
     #print(len(X),'X')
     n=len(X)
@@ -73,17 +41,6 @@ def create_word_maps_bi(X, y, max_size=None):
     """
     X: train sets
     y: train labels
-    max_size: you can ignore this, we are not using it
-    
-    return two dictionaries: pos_vocab, neg_vocab
-    pos_vocab:
-        In data where labels are 1 
-        keys: pairs of words
-        values: number of times the word pair appears
-    neg_vocab:
-        In data where labels are 0
-        keys: words 
-        values: number of times the word pair appears 
     """
     #print(len(X),'X')
     n=len(X)
@@ -118,11 +75,6 @@ def print_paramter_vals(laplace,pos_prior):
     print(f"Unigram Laplace {laplace}")
     print(f"Positive prior {pos_prior}")
 
-
-"""
-You can modify the default values for the Laplace smoothing parameter and the prior for the positive label.
-Notice that we may pass in specific values for these parameters during our testing.
-"""
 
 def naiveBayes(train_set, train_labels, dev_set, laplace=0.001, pos_prior=0.8, silently=False):
     '''
@@ -315,7 +267,6 @@ def bigramBayes(train_set, train_labels, dev_set, unigram_laplace=0.001, bigram_
             L_ub.append(1)
         else:
             L_ub.append(0)
-    
-    #raise RuntimeError("Replace this line with your code!")
+ 
 
     return L_ub
